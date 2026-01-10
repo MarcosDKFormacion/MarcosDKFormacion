@@ -1,0 +1,44 @@
+# Archivo: .github/workflows/snake.yml
+# Este workflow genera la animación de la serpiente que "come" tus contribuciones
+
+name: Generate Snake Animation
+
+on:
+  # Se ejecuta automáticamente cada 12 horas
+  schedule:
+    - cron: "0 */12 * * *"
+
+  # Permite ejecutarlo manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+  # Se ejecuta cuando haces push a main (útil para la primera vez)
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # Genera el SVG de la serpiente
+      - name: Generate Snake Animation
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: MarcosDKFormacion
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.gif?color_snake=007BFF&color_dots=#1C1C1C,#0D4A8A,#1A6FC2,#007BFF,#3399FF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Sube los archivos generados a la rama 'output'
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
