@@ -194,10 +194,7 @@ const marcosdk = {
 ## 📫 Conecta Conmigo
 
 <p align="center">
-  <a href="mailto:contacto@marcosdkformacion.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/>
-  </a>
-  <a href="https://youtube.com/@MarcosDKFormacion">
+  <a href="https://youtube.com/@MarcosDK">
     <img src="https://img.shields.io/badge/Suscríbete-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"/>
   </a>
 </p>
