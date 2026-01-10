@@ -22,17 +22,17 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      # Genera el SVG de la serpiente
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Genera el SVG de la serpiente (versión completa, no svg-only)
       - name: Generate Snake Animation
-        uses: Platane/snk/svg-only@v3
+        uses: Platane/snk@v3
         with:
           github_user_name: MarcosDKFormacion
           outputs: |
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake.gif?color_snake=007BFF&color_dots=#1C1C1C,#0D4A8A,#1A6FC2,#007BFF,#3399FF
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Sube los archivos generados a la rama 'output'
       - name: Push to output branch
